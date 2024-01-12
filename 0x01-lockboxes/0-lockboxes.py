@@ -34,5 +34,6 @@ def canUnlockAll(boxes):
             keys_num = len(keys)
         i += 1
     keys.append(0)
-    keys_unique = set(keys)
+    keys_unique = list(set(keys))
+    keys_unique = [k for k in keys_unique if k < len(boxes)]
     return len(keys_unique) == len(boxes)
