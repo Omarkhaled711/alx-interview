@@ -28,9 +28,10 @@ def canUnlockAll(boxes):
     keys_num = len(keys)
     i = 0
     while i < keys_num:
-        keys.extend(boxes[keys[i]])
-        boxes[keys[i]] = []
-        keys_num = len(keys)
+        if (keys[i] < len(boxes)):
+            keys.extend(boxes[keys[i]])
+            boxes[keys[i]] = []
+            keys_num = len(keys)
         i += 1
     keys.append(0)
     keys_unique = set(keys)
