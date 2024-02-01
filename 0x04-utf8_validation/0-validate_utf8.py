@@ -14,6 +14,7 @@ def validUTF8(data):
     cont = 0
     i = 0
     while i < len(data):
+        data[i] = data[i] & 0xFF
         if data[i] >> 5 == 0b110:
             cont = 1
         elif data[i] >> 4 == 0b1110:
@@ -24,7 +25,10 @@ def validUTF8(data):
             return False
         i += 1
         while cont != 0:
-            if i >= len(data) or data[i] >> 6 != 0b10:
+            if i >= len(data):
+                return False
+            data[i] = data[i] & 0xFF
+            if data[i] >> 6 != 0b10:
                 return False
             cont -= 1
             i += 1
