@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+import sys
+
 """
 solving Making Change problem module
 """
@@ -14,13 +16,13 @@ def calculate_change(coins, total, dp, coin_num):
     if dp[total] != -1:
         return dp[total]
 
-    result = 2e9
+    result = sys.maxsize
 
     for i in range(coin_num):
         if (coins[i] <= total):
             take_coin = calculate_change(coins, total-coins[i], dp, coin_num)
 
-            if take_coin != 2e9 and result > take_coin + 1:
+            if take_coin != sys.maxsize and result > take_coin + 1:
                 result = take_coin + 1
     dp[total] = result
     return result
@@ -36,6 +38,6 @@ def makeChange(coins, total):
 
     dp = [-1]*(total + 1)
     result = calculate_change(coins, total, dp, len(coins))
-    if result == 2e9:
+    if result == sys.maxsize:
         return -1
     return result
