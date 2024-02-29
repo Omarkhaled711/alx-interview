@@ -1,9 +1,10 @@
 #!/usr/bin/python3
-import sys
 
 """
 solving Making Change problem module
 """
+
+import sys
 
 
 def calculate_change(coins, total, dp, coin_num):
