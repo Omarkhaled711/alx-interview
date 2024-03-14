@@ -1,4 +1,9 @@
 #!/usr/bin/python3
+"""
+This moduel solves a prime game problem,
+using sieve
+"""
+
 
 def Sieve(n, prime):
     """
