@@ -5,22 +5,18 @@ using sieve
 """
 
 
-def Sieve(n):
+def Sieve(n, prime):
     """
     find prime numbers between 1, n inclusive
     """
     p = 2
-    prime = [True for i in range(n+1)]
-    prime_nums = n - 1
     while (p * p <= n):
 
         if (prime[p]):
             for i in range(p * p, n+1, p):
-                prime[i] = False
-                prime_nums -= 1
+                prime[i] = 0
 
         p += 1
-    return prime_nums
 
 
 def isWinner(x, nums):
@@ -38,8 +34,10 @@ def isWinner(x, nums):
 
     maria = 0
     ben = 0
-    for i in range(x):
-        prime_nums = Sieve(nums[i])
+    prime = [1 for i in range(sorted(nums)[-1]+1)]
+    Sieve(sorted(nums)[-1], prime)
+    for num in nums:
+        prime_nums = sum(prime[2: num + 1])
         if prime_nums % 2 == 0:
             ben += 1
         else:
