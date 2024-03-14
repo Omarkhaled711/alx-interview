@@ -31,6 +31,11 @@ def isWinner(x, nums):
     its multiples from the set. The player that cannot make a move
     loses the game.
     """
+    if x <= 0 or nums is None:
+        return None
+    if x != len(nums):
+        return None
+
     maria = 0
     ben = 0
     for i in range(x):
